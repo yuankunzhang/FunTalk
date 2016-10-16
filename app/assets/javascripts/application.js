@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require semantic-ui
+//= require vue
+//= require vue-router
+//= require vue-resource
 //= require_tree .
