@@ -1,18 +1,16 @@
 class TopicsController < ApplicationController
   def new
     @topic = Topic.new
-    render :new
+    render 'new'
   end
 
   def create
-    @topic = Topic.find(params[:id])
-    @topic.assign_attributes(topic_params)
+    @topic = Topic.new(topic_params)
 
     if @topic.save
-      @topics = Topic.all
-      render 'show'
+      render :json => {:status => 'ok'}
     else
-      render 'new'
+      render :json => {:status => 'err'}
     end
   end
 

@@ -1,4 +1,4 @@
-<div class="ui centered page grid">
+<div class="ui centered page grid search">
   <div class="ui form eight wide column">
     <div class="field">
       <div class="ui fluid action input">
@@ -13,10 +13,51 @@
   <div class="ui center aligned page grid">
     <div class="row">
       <div class="eight wide column">
-        <div class="ui horizontal divided">
+        <h1 class="ui header">Check out the Topics</h1>
+        <div class="ui horizontal divider">
           <i class="flaticon-settings icon"></i>
         </div>
-        <p class="ui centered">Check out the Topics</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui vertical main">
+  <div class="ui center aligned page grid">
+    <div class="row">
+      <div class="column">
+        <table class="ui very basic striped table">
+          <thead>
+            <tr>
+              <th class="right aligned">#</th>
+              <th>Topic</th>
+              <th class="right aligned">Owner</th>
+              <th class="right aligned">Votes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @topics.each do |topic| %>
+              <tr>
+                <td class="right aligned"><%= topic.id %></td>
+                <td><%= topic.subject %></td>
+                <td class="right aligned">Yuankun</td>
+                <td class="right aligned">3</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui vertical">
+  <div class="ui center aligned page grid">
+    <div class="row">
+      <div class="eight wide column">
+        <div class="ui horizontal divider">
+          <i class="flaticon-settings icon"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -26,43 +67,65 @@
   <div class="ui center aligned page grid">
     <div class="row">
       <div class="column">
-        <table class="ui very basic striped table">
-          <thead>
-            <tr>
-              <th>Topic</th>
-              <th class="right aligned">Owner</th>
-              <th class="right aligned">Votes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Swift in action</td>
-              <td class="right aligned">Yuankun</td>
-              <td class="right aligned">3</td>
-            </tr>
-            <tr>
-              <td>Swift in action</td>
-              <td class="right aligned">Yuankun</td>
-              <td class="right aligned">3</td>
-            </tr>
-            <tr>
-              <td>Swift in action</td>
-              <td class="right aligned">Yuankun</td>
-              <td class="right aligned">3</td>
-            </tr>
-            <tr>
-              <td>Swift in action</td>
-              <td class="right aligned">Yuankun</td>
-              <td class="right aligned">3</td>
-            </tr>
-            <tr>
-              <td>Swift in action</td>
-              <td class="right aligned">Yuankun</td>
-              <td class="right aligned">3</td>
-            </tr>
-          </tbody>
-        </table>
+        <button class="positive massive ui button" id="show-modal">Add a Topic</button>
       </div>
     </div>
   </div>
 </div>
+
+<div class="ui modal">
+  <div class="header">
+    Add a New Topic
+  </div>
+  <div class="content">
+    <%= form_for :topic, :html => {:class => "ui form", :id => 'create-topic'}, url: topics_path do |f| %>
+        <div class="field">
+          <%= f.label :subject %>
+          <%= f.text_field :subject, :placeholder => 'Topic Subject' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :description %>
+          <%= f.text_area :description, :placeholder => 'Topic Description' %>
+        </div>
+
+        <p>
+          <%= f.submit :class => 'ui button' %>
+        </p>
+    <% end %>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Cancel
+    </div>
+    <div class="ui positive right labeled icon button">
+      Submit
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#show-modal').click(function () {
+    $('.ui.modal').modal('setting', 'closable', false).modal('show');
+  });
+
+  $('form#create-topic').submit(function () {
+    var self = $(this);
+    var values = self.serialize();
+    self.addClass('loading');
+
+    $.ajax({
+      type: 'POST',
+      url: self.attr('action'),
+      data: values
+    }).success(function () {
+      self.removeClass('loading');
+      console.log('xxx');
+    }).error(function () {
+      self.removeClass('loading');
+      console.log('---');
+    });
+    return false;
+  });
+</script>

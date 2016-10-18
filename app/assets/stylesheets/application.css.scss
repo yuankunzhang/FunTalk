@@ -13,8 +13,22 @@
  *= require_tree .
  *= require_self
  */
+$font-url: 'https://fonts.googleapis.com/css?family=Open+Sans';
+$font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 @import "semantic-ui";
 
 .grid.navbar {
   margin-bottom: 50px;
+}
+
+.grid.navbar .item i {
+  margin-right: 4px;
+}
+
+.grid.search {
+  margin-bottom: 50px;
+}
+
+h1.ui.header {
+  font-size: 3em;
 }
