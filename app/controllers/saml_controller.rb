@@ -16,7 +16,8 @@ class SamlController < ApplicationController
       session[:authenticated] = true
       redirect_to root_path
     else
-      redirect_to(request.create(saml_settings))
+      # redirect_to(request.create(saml_settings))
+      render :status => 500
     end
   end
 
@@ -32,6 +33,6 @@ class SamlController < ApplicationController
   end
 
   def idp_metadata
-    'YOUR_METADATA'
+    'https://dev-772843.oktapreview.com/app/exk8kcfswzm4ozujm0h7/sso/saml/metadata'
   end
 end
