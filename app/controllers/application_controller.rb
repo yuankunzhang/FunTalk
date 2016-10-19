@@ -12,4 +12,6 @@ class ApplicationController < ActionController::Base
     return unless session[:email]
     @current_user ||= User.find_by(email: session[:email])
   end
+
+  helper_method :current_user
 end

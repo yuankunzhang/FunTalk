@@ -14,7 +14,6 @@ class TopicsController < ApplicationController
   end
 
   def get_pending
-    puts current_user
     @topics = Topic.where(done: false).order(created_at: :desc)
     render :json => {:s => true, :q => {:topics => @topics}}
   end

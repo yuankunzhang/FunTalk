@@ -12,14 +12,16 @@
         <i class="bug icon"></i> About
       </a>
       <div class="right menu">
-        <a class="ui dropdown item">Yuankun
+        <a class="ui dropdown item"><%= current_user.firstname %>
           <i class="dropdown icon"></i>
           <div class="menu">
             <div class="item">Profile</div>
             <div class="item">Topics</div>
-            <div class="item">Something else here</div>
+            <div class="item">Reputation</div>
             <div class="ui divider"></div>
-            <div class="item">Logout</div>
+            <div class="item">
+              <i class="plus icon"></i>New Topic
+            </div>
           </div>
         </a>
       </div>
@@ -44,9 +46,9 @@
           <div class="menu">
             <div class="item">Profile</div>
             <div class="item">Topics</div>
-            <div class="item">Something else here</div>
+            <div class="item">Reputation</div>
             <div class="ui divider"></div>
-            <div class="item">Logout</div>
+            <div class="item">New Topic</div>
           </div>
         </a>
       </div>
