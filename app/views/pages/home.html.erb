@@ -15,6 +15,12 @@
   <div class="ui center aligned page grid">
     <div class="row">
       <div class="column">
+        <div class="ui success message hidden">
+          <i class="close icon"></i>
+          <div class="header">You just added a new topic.</div>
+          <p>Your great ideas worth spreading, huh?
+          </p>
+        </div>
         <table class="ui very basic striped table">
           <thead>
             <tr>
@@ -76,16 +82,16 @@
           <%= f.text_area :description, :placeholder => 'Topic Description' %>
         </div>
 
-        <p>
-          <%= f.submit :class => 'ui button' %>
-        </p>
+        <!--<p>-->
+          <!--<%= f.submit :class => 'ui button' %>-->
+        <!--</p>-->
     <% end %>
   </div>
   <div class="actions">
     <div class="ui black deny button">
       Cancel
     </div>
-    <div class="ui positive right labeled icon button">
+    <div class="ui positive right labeled icon button" id="submit-button">
       Submit
       <i class="checkmark icon"></i>
     </div>
@@ -108,7 +114,6 @@
           url: '/topics/pending',
           method: 'GET',
           success: function (data) {
-            console.dir(data.q);
             if (data.s) {
               self.topics = data.q.topics;
             }
@@ -125,7 +130,16 @@
     $('.ui.modal').modal('setting', 'closable', false).modal('show');
   });
 
-  $('form#create-topic').submit(function () {
+  $('.message .close').click(function () {
+    $(this).parent().hide('slow');
+  });
+
+  $('form#create-topic').form({
+    fields: {
+      topic_subject: 'empty',
+      topic_description: 'empty'
+    }
+  }).submit(function () {
     var self = $(this);
     var values = self.serialize();
     self.addClass('loading');
@@ -135,12 +149,22 @@
       url: self.attr('action'),
       data: values
     }).success(function () {
-      self.removeClass('loading');
+      self.trigger('reset');
+      $('.success.message').show();
       topics.fetch();
+      self.removeClass('loading');
+      $('.ui.modal').modal('hide');
     }).error(function () {
       self.removeClass('loading');
-      console.log('---');
     });
+    return false;
+  });
+
+  $('#submit-button').click(function () {
+    var f = $('form#create-topic');
+    if (f.form('is valid')) {
+      f.submit();
+    }
     return false;
   });
 </script>
