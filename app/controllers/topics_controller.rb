@@ -1,26 +1,27 @@
 class TopicsController < ApplicationController
-  def new
-    @topic = Topic.new
-    render 'new'
-  end
 
   def create
     @topic = Topic.new(topic_params)
 
     if @topic.save
-      render :json => {:status => 'ok'}
+      render :json => {:s => true}
     else
-      render :json => {:status => 'err'}
+      render :json => {:s => false}
     end
-  end
-
-  def edit
   end
 
   def update
   end
 
-  def destroy
+  def get_pending
+    puts current_user
+    @topics = Topic.where(done: false).order(created_at: :desc)
+    render :json => {:s => true, :q => {:topics => @topics}}
+  end
+
+  def get_archived
+    @topics = Topic.where(done: true).order(created_at: :desc)
+    render :json => {:s => true, :q => {:topics => @topics}}
   end
 
   private

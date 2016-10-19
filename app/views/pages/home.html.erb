@@ -1,18 +1,7 @@
-<div class="ui centered page grid search">
-  <div class="ui form eight wide column">
-    <div class="field">
-      <div class="ui fluid action input">
-        <input placeholder="Search a topic..." type="text"/>
-        <div class="ui button">Search</div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="ui vertical">
   <div class="ui center aligned page grid">
     <div class="row">
-      <div class="eight wide column">
+      <div class="nine wide column">
         <h1 class="ui header">Check out the Topics</h1>
         <div class="ui horizontal divider">
           <i class="gay icon"></i>
@@ -22,7 +11,7 @@
   </div>
 </div>
 
-<div class="ui vertical main">
+<div class="ui vertical main" id="pending-topics">
   <div class="ui center aligned page grid">
     <div class="row">
       <div class="column">
@@ -36,14 +25,12 @@
             </tr>
           </thead>
           <tbody>
-            <% @topics.each do |topic| %>
-              <tr>
-                <td class="right aligned"><%= topic.id %></td>
-                <td><%= topic.subject %></td>
-                <td class="right aligned">Yuankun</td>
-                <td class="right aligned">3</td>
-              </tr>
-            <% end %>
+            <tr v-for="topic in topics">
+              <td class="right aligned">{{ topic.id }}</td>
+              <td>{{ topic.subject }}</td>
+              <td class="right aligned">Yuankun</td>
+              <td class="right aligned">3</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -54,7 +41,7 @@
 <div class="ui vertical">
   <div class="ui center aligned page grid">
     <div class="row">
-      <div class="eight wide column">
+      <div class="nine wide column">
         <div class="ui horizontal divider">
           <i class="gay icon"></i>
         </div>
@@ -106,6 +93,33 @@
 </div>
 
 <script>
+  var topics = new Vue({
+    el: '#pending-topics',
+    data: {
+      topics: []
+    },
+    created: function () {
+      this.fetch();
+    },
+    methods: {
+      fetch: function () {
+        var self = this;
+        $.ajax({
+          url: '/topics/pending',
+          method: 'GET',
+          success: function (data) {
+            if (data.s) {
+              self.topics = data.q.topics;
+            }
+          },
+          error: function (err) {
+            console.error(err);
+          }
+        });
+      }
+    }
+  });
+
   $('#show-modal').click(function () {
     $('.ui.modal').modal('setting', 'closable', false).modal('show');
   });
@@ -121,7 +135,7 @@
       data: values
     }).success(function () {
       self.removeClass('loading');
-      console.log('xxx');
+      topics.fetch();
     }).error(function () {
       self.removeClass('loading');
       console.log('---');

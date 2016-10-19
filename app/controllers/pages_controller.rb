@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @topics = Topic.all.reverse
+    @topics = Topic.where(done: false).order(created_at: :desc)
   end
 end
