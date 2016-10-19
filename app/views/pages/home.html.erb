@@ -28,7 +28,7 @@
             <tr v-for="topic in topics">
               <td class="right aligned">{{ topic.id }}</td>
               <td>{{ topic.subject }}</td>
-              <td class="right aligned">Yuankun</td>
+              <td class="right aligned">{{ topic.author }}</td>
               <td class="right aligned">3</td>
             </tr>
           </tbody>
@@ -108,6 +108,7 @@
           url: '/topics/pending',
           method: 'GET',
           success: function (data) {
+            console.dir(data.q);
             if (data.s) {
               self.topics = data.q.topics;
             }
