@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get 'about', to: 'pages#about', as: 'about'
+  get 'archives', to: 'pages#archives', as: 'archives'
 
   post 'topics', to: 'topics#create'
   get 'topics/pending', to: 'topics#get_pending'

@@ -2,13 +2,13 @@
   <div class="computer tablet only row">
     <div class="ui menu page grid fixed">
       <a class="brand item">FunTalk</a>
-      <a href="/" class="active item">
+      <a href="<%= root_path %>" class="<%= active_anchor root_path %> item">
         <i class="code icon"></i> Home
       </a>
-      <a href="" class="item">
+      <a href="<%= archives_path %>" class="<%= active_anchor archives_path %> item">
         <i class="fork icon"></i> Archives
       </a>
-      <a href="<%= about_path %>" class="item">
+      <a href="<%= about_path %>" class="<%= active_anchor about_path %> item">
         <i class="bug icon"></i> About
       </a>
       <div class="right menu">
@@ -37,9 +37,9 @@
       </div>
     </div>
     <div class="ui vertical navbar menu">
-      <a href="/" class="active item">Home</a>
-      <a href="" class="item">Archives</a>
-      <a href="<%= about_path %>" class="item">About</a>
+      <a href="<%= root_path %>" class="<%= active_anchor root_path %> item">Home</a>
+      <a href="<%= archives_path %>" class="<%= active_anchor archives_path %> item">Archives</a>
+      <a href="<%= about_path %>" class="<%= active_anchor about_path %> item">About</a>
       <div class="menu">
         <a class="ui dropdown item">Yuankun
           <i class="dropdown icon"></i>
