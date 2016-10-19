@@ -35,7 +35,10 @@
               <td class="right aligned">{{ topic.id }}</td>
               <td>{{ topic.subject }}</td>
               <td class="right aligned">{{ topic.author }}</td>
-              <td class="right aligned">{{ topic.vote }}</td>
+              <td class="votes right aligned">
+                <span><i class="thumbs outline up icon"></i></span>
+                {{ topic.vote_count }}
+              </td>
             </tr>
           </tbody>
         </table>
