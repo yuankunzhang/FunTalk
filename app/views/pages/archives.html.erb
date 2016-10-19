@@ -1,0 +1,75 @@
+<div class="ui vertical">
+  <div class="ui center aligned page grid">
+    <div class="row">
+      <div class="nine wide column">
+        <h1 class="ui header">Archives</h1>
+        <div class="ui horizontal divider">
+          <i class="gay icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui vertical main" id="archived-topics">
+  <div class="ui center aligned page grid">
+    <div class="row">
+      <div class="column">
+        <div class="ui success message hidden">
+          <i class="close icon"></i>
+          <div class="header">You just added a new topic.</div>
+          <p>Your great ideas worth spreading, huh?
+          </p>
+        </div>
+        <table class="ui very basic striped table">
+          <thead>
+          <tr>
+            <th class="right aligned">#</th>
+            <th>Topic</th>
+            <th class="right aligned">Owner</th>
+            <th class="right aligned">Date</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="topic in topics">
+            <td class="right aligned">{{ topic.id }}</td>
+            <td>{{ topic.subject }}</td>
+            <td class="right aligned">{{ topic.author }}</td>
+            <td class="date right aligned">
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var topics = new Vue({
+    el: '#archived-topics',
+    data: {
+      topics: []
+    },
+    created: function () {
+      this.fetch();
+    },
+    methods: {
+      fetch: function () {
+        var self = this;
+        $.ajax({
+          url: '/topics/archived',
+          method: 'GET',
+          success: function (data) {
+            if (data.s) {
+              self.topics = data.q.topics;
+            }
+          },
+          error: function (err) {
+            console.error(err);
+          }
+        });
+      }
+    }
+  });
+</script>

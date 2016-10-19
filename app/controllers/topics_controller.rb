@@ -14,13 +14,18 @@ class TopicsController < ApplicationController
   def update
   end
 
+  def show
+    @topic = Topic.find(params[:id])
+    puts @topic
+  end
+
   def get_pending
     @topics = Topic.left_outer_joins(:user, :votes).select('topics.*,users.first_name as author,count(votes.count) as vote_count').where(completed: false).group('topics.id').order(created_at: :desc)
     render :json => {:s => true, :q => {:topics => @topics}}
   end
 
   def get_archived
-    @topics = Topic.where(done: true).order(created_at: :desc)
+    @topics = Topic.left_outer_joins(:user).select('topics.*,users.first_name as author').where(completed: true).order(created_at: :desc)
     render :json => {:s => true, :q => {:topics => @topics}}
   end
 

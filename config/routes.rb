@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'archives', to: 'pages#archives', as: 'archives'
 
   post 'topics', to: 'topics#create'
+  get 'topic/:id', to: 'topics#show', as: 'topic'
   get 'topics/pending', to: 'topics#get_pending'
   get 'topics/archived', to: 'topics#get_archived'
 
