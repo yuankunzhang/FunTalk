@@ -7,9 +7,9 @@ class SamlController < ApplicationController
     # request = OneLogin::RubySaml::Authrequest.new
     # redirect_to(request.create(saml_settings))
     email = 'yuankun.zhang@funplus.com'
-    firstname = 'Yuankun'
-    lastname = 'Zhang'
-    User.find_or_create_by(email: email, firstname: firstname, lastname: lastname)
+    first_name = 'Yuankun'
+    last_name = 'Zhang'
+    User.find_or_create_by(email: email, first_name: first_name, last_name: last_name)
 
     session[:authenticated] = true
     session[:email] = email

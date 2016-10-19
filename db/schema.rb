@@ -15,19 +15,22 @@ ActiveRecord::Schema.define(version: 20161019102520) do
   create_table "topics", force: :cascade do |t|
     t.string   "subject"
     t.text     "description"
-    t.boolean  "done",        default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "completed",    default: false
+    t.date     "completed_at"
+    t.integer  "vote",         default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
-    t.string   "firstname"
-    t.string   "lastname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "vote_count", default: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

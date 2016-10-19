@@ -3,7 +3,9 @@ class CreateTopics < ActiveRecord::Migration[5.0]
     create_table :topics do |t|
       t.string :subject
       t.text :description
-      t.boolean :done, :default => false
+      t.boolean :completed, :default => false
+      t.date :completed_at
+      t.integer :vote, :default => 0
       t.date :created_at
 
       t.timestamps

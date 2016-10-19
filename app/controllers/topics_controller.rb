@@ -15,7 +15,7 @@ class TopicsController < ApplicationController
   end
 
   def get_pending
-    @topics = Topic.left_outer_joins(:user).select('topics.id,subject,description,topics.created_at,firstname as author').where(done: false).order(created_at: :desc)
+    @topics = Topic.left_outer_joins(:user).select('topics.*,users.first_name as author').where(completed: false).order(created_at: :desc)
     render :json => {:s => true, :q => {:topics => @topics}}
   end
 
