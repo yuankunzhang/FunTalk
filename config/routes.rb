@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'topics/pending', to: 'topics#get_pending'
   get 'topics/archived', to: 'topics#get_archived'
 
+  post 'votes/create'
+  post 'votes/destroy'
+
   get 'saml/init'
   post 'saml/consume'
 end

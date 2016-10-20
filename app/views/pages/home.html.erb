@@ -35,9 +35,15 @@
               <td class="right aligned">{{ topic.id }}</td>
               <td><a v-bind="{href: '/topic/' + topic.id}">{{ topic.subject }}</a></td>
               <td class="right aligned">{{ topic.author }}</td>
-              <td class="votes right aligned">
-                <span><i class="thumbs outline up icon"></i></span>
-                {{ topic.vote_count }}
+              <td class="right aligned">
+                <a v-if="voted_topic_ids.indexOf(topic.id) == -1" class="ui label" v-bind="{value: topic.id}" onclick="vote(this)">
+                  <i class="thumbs outline up icon"></i>
+                  <span>{{ topic.vote_count }}</span>
+                </a>
+                <a v-else class="ui olive label" v-bind="{value: topic.id}" onclick="cancel_vote(this)">
+                  <i class="thumbs outline up icon"></i>
+                  <span>{{ topic.vote_count }}</span>
+                </a>
               </td>
             </tr>
           </tbody>
@@ -98,13 +104,23 @@
 </div>
 
 <script>
+  var votes = <%= raw current_user.votes.to_json %>;
+  var voted_topic_ids = [];
+  for (var i = 0; i < votes.length; i++) {
+    voted_topic_ids.push(votes[i].topic_id);
+  }
+
   var topics = new Vue({
     el: '#pending-topics',
     data: {
-      topics: []
+      topics: [],
+      voted_topic_ids: voted_topic_ids
     },
     created: function () {
       this.fetch();
+    },
+    attached: function () {
+      console.log('attached');
     },
     methods: {
       fetch: function () {
@@ -166,4 +182,28 @@
     }
     return false;
   });
+
+  function vote(el) {
+    $.ajax({
+      type: 'POST',
+      url: '/votes/create',
+      data: {topic_id: el.value}
+    }).success(function () {
+//      el.className = "ui olive label";
+//      el.lastElementChild.innerHTML = '1';
+    }).error(function () {
+    });
+  }
+
+  function cancel_vote(el) {
+    $.ajax({
+      type: 'POST',
+      url: '/votes/destroy',
+      data: {topic_id: el.value}
+    }).success(function () {
+//      el.className = "ui label";
+//      el.lastElementChild.innerHTML = '0';
+    }).error(function () {
+    });
+  }
 </script>

@@ -41,8 +41,8 @@ class SamlController < ApplicationController
   def saml_settings
     idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
     settings = idp_metadata_parser.parse(idp_metadata)
-    settings.assertion_consumer_service_url = "http://hobnmzfazp.localtunnel.me/saml/consume"
-    settings.issuer = "http://hobnmzfazp.localtunnel.me/saml/consume"
+    settings.assertion_consumer_service_url = "http://oyjmlgfdet.localtunnel.me/saml/consume"
+    settings.issuer = "http://oyjmlgfdet.localtunnel.me/saml/consume"
     settings.name_identifier_format = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
     settings
   end

@@ -16,7 +16,6 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    puts @topic
   end
 
   def get_pending
