@@ -18,19 +18,19 @@ $font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 @import "semantic-ui";
 
 .grid.navbar {
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 
 .grid.navbar .item i {
   margin-right: 4px;
 }
 
-.grid.search {
-  margin-bottom: 50px;
-}
-
 h1.ui.header {
   font-size: 3em;
+}
+
+.announcement {
+  margin-bottom: 20px;
 }
 
 button.ui.positive.massive.button {
