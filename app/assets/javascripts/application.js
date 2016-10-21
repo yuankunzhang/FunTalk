@@ -17,4 +17,3 @@
 //= require vue
 //= require vue-router
 //= require vue-resource
-//= require_tree .
