@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'topics/pending', to: 'topics#get_pending'
   get 'topics/archived', to: 'topics#get_archived'
 
+  get 'users/info', to: 'users#get_info'
+
   post 'votes/create'
   post 'votes/destroy'
 
