@@ -12,7 +12,6 @@ class SamlController < ApplicationController
     # session[:authenticated] = true
     # session[:email] = email
     # redirect_to root_path
-    OneLogin::RubySaml::Logging.logger = Logger.new(STDOUT)
     request = OneLogin::RubySaml::Authrequest.new
     redirect_to(request.create(saml_settings))
   end
@@ -41,7 +40,7 @@ class SamlController < ApplicationController
     idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
     settings = idp_metadata_parser.parse(idp_metadata)
     settings.assertion_consumer_service_url = "http://talk.funplus.io/saml/consume"
-    settings.issuer = "http://talk.fuplus.io/saml/consume"
+    settings.issuer = "http://talk.funplus.io/saml/consume"
     settings.name_identifier_format = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
     settings
   end
