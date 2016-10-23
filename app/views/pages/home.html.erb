@@ -52,7 +52,7 @@
             <template v-for="topic in topics">
               <tr>
                 <td class="right aligned">{{ topic.id }}</td>
-                <td>{{ topic.subject }}</td>
+                <td><a v-bind:href="'/topic/' + topic.id">{{ topic.subject }}</a></td>
                 <td class="right aligned">{{ topic.author }}</td>
                 <td class="right aligned">
                   <a v-bind:class="['ui', 'label', is_voted(topic.id) ? 'olive' : '']" v-on:click="toggleVote" data-content="Not enough point to vote"> 
@@ -103,10 +103,10 @@
           <%= f.text_field :subject, :placeholder => 'Topic Subject' %>
         </div>
 
-        <div class="field">
-          <%= f.label :tags %>
-          <%= f.text_field :tags, :placeholder => 'Tags (separated by comma)' %>
-        </div>
+        <!--<div class="field">-->
+          <!--<%= f.label :tags %>-->
+          <!--<%= f.text_field :tags, :placeholder => 'Tags (separated by comma)' %>-->
+        <!--</div>-->
 
         <div class="field">
           <%= f.label :description %>
