@@ -14,13 +14,13 @@
   <div class="ui left aligned page grid">
     <div class="row">
       <div class="column">
-        <h3 class="ui header">Author</h3>
+        <h3 class="ui header"><%= t 'committer' %></h3>
         <div><%= @topic.user.first_name %></div>
       </div>
     </div>
     <div class="row">
       <div class="column">
-        <h3 class="ui header">Description</h3>
+        <h3 class="ui header"><%= t 'topic_description' %></h3>
         <div><%= @topic.description %></div>
       </div>
     </div>

@@ -2,7 +2,7 @@
   <div class="ui center aligned page grid">
     <div class="row">
       <div class="nine wide column">
-        <h1 class="ui header">Archives</h1>
+        <h1 class="ui header"><%= t 'archives' %></h1>
         <div class="ui horizontal divider">
           <i class="gay icon"></i>
         </div>
@@ -15,19 +15,13 @@
   <div class="ui center aligned page grid">
     <div class="row">
       <div class="column">
-        <div class="ui success message hidden">
-          <i class="close icon"></i>
-          <div class="header">You just added a new topic.</div>
-          <p>Your great ideas worth spreading, huh?
-          </p>
-        </div>
         <table class="ui very basic striped table">
           <thead>
           <tr>
             <th class="right aligned">#</th>
-            <th>Topic</th>
-            <th class="right aligned">Owner</th>
-            <th class="right aligned">Date</th>
+            <th><%= t 'topic' %>></th>
+            <th class="right aligned"><%= t 'committer' %></th>
+            <th class="right aligned"><%= t 'completion_date' %></th>
           </tr>
           </thead>
           <tbody>

@@ -3,24 +3,24 @@
     <div class="ui menu page grid fixed">
       <a class="brand item">FunTalk</a>
       <a href="<%= root_path %>" class="<%= active_anchor root_path %> item">
-        <i class="code icon"></i> Home
+        <i class="code icon"></i> <%= t 'home' %>
       </a>
       <a href="<%= archives_path %>" class="<%= active_anchor archives_path %> item">
-        <i class="fork icon"></i> Archives
+        <i class="fork icon"></i> <%= t 'archives' %>
       </a>
       <a href="<%= about_path %>" class="<%= active_anchor about_path %> item">
-        <i class="bug icon"></i> About
+        <i class="bug icon"></i> <%= t 'about' %>
       </a>
       <div class="right menu">
         <a class="ui dropdown item"><%= current_user.first_name %>
           <i class="dropdown icon"></i>
           <div class="menu">
-            <div class="item">Profile</div>
-            <div class="item">Topics</div>
-            <div class="item">Reputation</div>
+            <div class="item"><%= t 'profile' %></div>
+            <div class="item"><%= t 'topics' %></div>
+            <div class="item"><%= t 'reputation' %></div>
             <div class="ui divider"></div>
             <div class="item">
-              <i class="plus icon"></i>New Topic
+              <i class="plus icon"></i><%= t 'new_topic' %>
             </div>
           </div>
         </a>
@@ -44,11 +44,11 @@
         <a class="ui dropdown item">Yuankun
           <i class="dropdown icon"></i>
           <div class="menu">
-            <div class="item">Profile</div>
-            <div class="item">Topics</div>
-            <div class="item">Reputation</div>
+            <div class="item"><%= t 'profile' %></div>
+            <div class="item"><%= t 'topics' %></div>
+            <div class="item"><%= t 'reputation' %></div>
             <div class="ui divider"></div>
-            <div class="item">New Topic</div>
+            <div class="item"><%= t 'new_topic' %></div>
           </div>
         </a>
       </div>

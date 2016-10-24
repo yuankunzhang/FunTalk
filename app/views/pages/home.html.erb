@@ -20,7 +20,7 @@
   <div class="ui center aligned page grid">
     <div class="row">
       <div class="nine wide column">
-        <h1 class="ui header">Check out the Topics</h1>
+        <h1 class="ui header"><%= t 'topic_list' %></h1>
         <div class="ui horizontal divider">
           <i class="gay icon"></i>
         </div>
@@ -43,9 +43,9 @@
           <thead>
             <tr>
               <th class="right aligned">#</th>
-              <th>Topic</th>
-              <th class="right aligned">Owner</th>
-              <th class="right aligned">Votes</th>
+              <th><%= t 'topic' %></th>
+              <th class="right aligned"><%= t 'committer' %></th>
+              <th class="right aligned"><%= t 'votes' %></th>
             </tr>
           </thead>
           <tbody>
@@ -86,7 +86,7 @@
   <div class="ui center aligned page grid">
     <div class="row">
       <div class="column">
-        <button class="positive massive ui button" id="show-modal">Add a Topic</button>
+        <button class="positive massive ui button" id="show-modal"><%= t 'add_topic' %></button>
       </div>
     </div>
   </div>
@@ -94,13 +94,13 @@
 
 <div class="ui modal">
   <div class="header">
-    Add a New Topic
+    <%= t 'add_topic' %>
   </div>
   <div class="content">
     <%= form_for :topic, :html => {:class => "ui form", :id => 'create-topic'}, url: topics_path do |f| %>
         <div class="field">
-          <%= f.label :subject %>
-          <%= f.text_field :subject, :placeholder => 'Topic Subject' %>
+          <%= f.label :subject, (t 'topic_subject') %>
+          <%= f.text_field :subject %>
         </div>
 
         <!--<div class="field">-->
@@ -109,17 +109,17 @@
         <!--</div>-->
 
         <div class="field">
-          <%= f.label :description %>
-          <%= f.text_area :description, :placeholder => 'Topic Description' %>
+          <%= f.label :description, (t 'topic_description') %>
+          <%= f.text_area :description %>
         </div>
     <% end %>
   </div>
   <div class="actions">
     <div class="ui black deny button">
-      Cancel
+      <%= t 'cancel' %>
     </div>
     <div class="ui positive right labeled icon button" id="submit-button">
-      Submit
+      <%= t 'submit' %>
       <i class="checkmark icon"></i>
     </div>
   </div>
