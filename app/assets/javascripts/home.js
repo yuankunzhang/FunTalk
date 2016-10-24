@@ -17,6 +17,9 @@ var topics = new Vue({
     created: function () {
         this.fetchTopics();
     },
+    updated: function () {
+        $('a.subject').popup();
+    },
     methods: {
         fetchTopics: function () {
             var self = this;
