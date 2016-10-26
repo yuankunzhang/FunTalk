@@ -108,17 +108,11 @@ var topics = new Vue({
                     console.log(err);
                 }
             })
-        },
-        before_goto_topic_page: function () {
-            $('a.subject').popup('hide all');
         }
     }
 });
 
 $(document).ready(function () {
-    // hack
-    $('a.subject').popup();
-
     $('#show-modal').click(function () {
         $('.ui.modal').modal('setting', 'closable', false).modal('show');
     });

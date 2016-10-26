@@ -50,7 +50,7 @@
             <template v-for="topic in topics">
               <tr>
                 <td class="right aligned">{{ topic.id }}</td>
-                <td><a class="subject" v-on:click="before_goto_topic_page" v-bind:href="'/topic/' + topic.id" v-bind="{'data-content': getDescription(topic.description), 'data-variation': 'basic'}" data-position="bottom left">{{ topic.subject }}</a></td>
+                <td><a class="subject" v-bind:href="'/topic/' + topic.id" v-bind="{'data-content': getDescription(topic.description), 'data-variation': 'basic'}" data-position="bottom left">{{ topic.subject }}</a></td>
                 <td class="right aligned">{{ topic.author }}</td>
                 <td class="right aligned">
                   <a class="ui label" data-tooltip="撤销投票" data-position="right center" v-on:click="toggleVote" v-if="is_voted(topic.id)">
