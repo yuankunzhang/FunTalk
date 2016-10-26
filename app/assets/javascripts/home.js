@@ -59,6 +59,9 @@ var topics = new Vue({
                 this.voted_topic_ids.push(q.votes[i].topic_id);
             }
         },
+        getDescription: function (description) {
+            return description.length > 200 ? description.substring(0, 200) + '...' : description;
+        },
         is_voted: function (topic_id) {
             return this.voted_topic_ids.indexOf(topic_id) != -1;
         },
@@ -105,11 +108,17 @@ var topics = new Vue({
                     console.log(err);
                 }
             })
+        },
+        before_goto_topic_page: function () {
+            $('a.subject').popup('hide all');
         }
     }
 });
 
 $(document).ready(function () {
+    // hack
+    $('a.subject').popup();
+
     $('#show-modal').click(function () {
         $('.ui.modal').modal('setting', 'closable', false).modal('show');
     });
@@ -120,8 +129,7 @@ $(document).ready(function () {
 
     $('form#create-topic').form({
         fields: {
-            topic_subject: 'empty',
-            topic_description: 'empty'
+            topic_subject: 'empty'
         }
     }).submit(function () {
         var self = $(this);

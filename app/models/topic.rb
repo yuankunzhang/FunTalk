@@ -3,5 +3,5 @@ class Topic < ApplicationRecord
   has_many :votes
 
   validates :subject, presence: true
-  validates :description, presence: true
+  # validates :description, presence: true
 end
