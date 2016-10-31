@@ -4,16 +4,19 @@ class SamlController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def init
-    # email = 'yuankun.zhang@funplus.com'
-    # first_name = 'Yuankun'
-    # last_name = 'Zhang'
-    # User.find_or_create_by(email: email, first_name: first_name, last_name: last_name)
-    #
-    # session[:authenticated] = true
-    # session[:email] = email
-    # redirect_to root_path
-    request = OneLogin::RubySaml::Authrequest.new
-    redirect_to(request.create(saml_settings))
+    if Rails.env.development?
+      email = 'yuankun.zhang@funplus.com'
+      first_name = 'Yuankun'
+      last_name = 'Zhang'
+      User.find_or_create_by(email: email, first_name: first_name, last_name: last_name)
+
+      session[:authenticated] = true
+      session[:email] = email
+      redirect_to root_path
+    else
+      request = OneLogin::RubySaml::Authrequest.new
+      redirect_to(request.create(saml_settings))
+    end
   end
 
   def consume
