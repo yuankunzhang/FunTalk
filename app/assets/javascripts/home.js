@@ -66,48 +66,53 @@ var topics = new Vue({
             return this.voted_topic_ids.indexOf(topic_id) != -1;
         },
         toggleVote: function (event) {
-            var target = event.target;
-            if (target.tagName.toLowerCase() != 'a') {
-                target = target.parentElement;
-            }
+            // Vote Ended
+            event.preventDefault();
+            return false;
+            // Vote Ended
 
-            var topic_id = target.lastElementChild.value;
-            var voted = this.is_voted(parseInt(topic_id));
-
-            if (!voted && this.points === 0) {
-                console.log('not enough points');
-                return;
-            }
-
-            var url = voted ? '/votes/destroy' : '/votes/create';
-            var self = this;
-            
-            $.ajax({
-                url: url,
-                method: 'POST',
-                data: {
-                    'topic_id': topic_id
-                },
-                success: function (data) {
-                    if (data.s) {
-                        self.refreshVoteInfo(data.q);
-                        for (var i = 0; i < self.topics.length; i++) {
-                            if (self.topics[i].id == topic_id) {
-                                if (voted) {
-                                    var idx = self.voted_topic_ids.indexOf(topic_id);
-                                    console.log(self.voted_topic_ids);
-                                    self.topics[i].vote_count -= 1;
-                                } else {
-                                    self.topics[i].vote_count += 1;
-                                }
-                            }
-                        }
-                    }
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-            })
+            // var target = event.target;
+            // if (target.tagName.toLowerCase() != 'a') {
+            //     target = target.parentElement;
+            // }
+            //
+            // var topic_id = target.lastElementChild.value;
+            // var voted = this.is_voted(parseInt(topic_id));
+            //
+            // if (!voted && this.points === 0) {
+            //     console.log('not enough points');
+            //     return;
+            // }
+            //
+            // var url = voted ? '/votes/destroy' : '/votes/create';
+            // var self = this;
+            //
+            // $.ajax({
+            //     url: url,
+            //     method: 'POST',
+            //     data: {
+            //         'topic_id': topic_id
+            //     },
+            //     success: function (data) {
+            //         if (data.s) {
+            //             self.refreshVoteInfo(data.q);
+            //             for (var i = 0; i < self.topics.length; i++) {
+            //                 if (self.topics[i].id == topic_id) {
+            //                     if (voted) {
+            //                         var idx = self.voted_topic_ids.indexOf(topic_id);
+            //                         console.log(self.voted_topic_ids);
+            //                         self.topics[i].vote_count -= 1;
+            //                     } else {
+            //                         self.topics[i].vote_count += 1;
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     },
+            //     error: function (err) {
+            //         console.log(err);
+            //     }
+            // })
         }
     }
 });
