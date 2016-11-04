@@ -30,6 +30,7 @@
             <td>{{ topic.subject }}</td>
             <td class="right aligned">{{ topic.author }}</td>
             <td class="date right aligned">
+              {{ topic.completed_at }}
             </td>
           </tr>
           </tbody>
@@ -37,7 +38,7 @@
       </div>
     </div>
   </div>
-</div>
+</div>g
 
 <script>
   var topics = new Vue({

@@ -28,20 +28,20 @@
 </div>
 
 <div class="ui vertical main" id="pending-topics">
-  <div class="ui page grid">
-    <div class="row">
-      <div class="column">
-        <div class="ui success message">
-          <h3 class="ui header">本次分享：JavaScript 基本知识</h3>
-          <ul class="list">
-            <li>分享人：郑凯</li>
-            <li>地点：B20 会议室</li>
-            <li>时间：11月3日（周四）下午 4:00 - 5:00</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!--<div class="ui page grid">-->
+    <!--<div class="row">-->
+      <!--<div class="column">-->
+        <!--<div class="ui success message">-->
+          <!--<h3 class="ui header">本次分享：JavaScript 基本知识</h3>-->
+          <!--<ul class="list">-->
+            <!--<li>分享人：郑凯</li>-->
+            <!--<li>地点：B20 会议室</li>-->
+            <!--<li>时间：11月3日（周四）下午 4:00 - 5:00</li>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
   <div class="ui center aligned page grid">
     <div class="row">
@@ -67,26 +67,26 @@
                 <td><a class="subject" v-bind:href="'/topic/' + topic.id" v-bind="{'data-content': getDescription(topic.description), 'data-variation': 'basic'}" data-position="bottom left">{{ topic.subject }}</a></td>
                 <td class="right aligned">{{ topic.author }}</td>
                 <td class="right aligned">
-                  <!--<a class="ui label" data-tooltip="撤销投票" data-position="right center" v-on:click="toggleVote" v-if="is_voted(topic.id)">-->
-                    <!--<i class="remove icon"></i>-->
-                    <!--<span>{{ topic.vote_count }}</span>-->
-                    <!--<input type="hidden" v-bind:value="topic.id">-->
-                  <!--</a>-->
-                  <!--<a class="ui olive label" data-tooltip="投一票" data-position="right center" v-on:click="toggleVote"  v-if="!is_voted(topic.id) && points > 0">-->
-                    <!--<i class="thumbs outline up icon"></i>-->
-                    <!--<span>{{ topic.vote_count }}</span>-->
-                    <!--<input type="hidden" v-bind:value="topic.id">-->
-                  <!--</a>-->
-                  <!--<a class="ui circular labels" data-tooltip="您已经没有票啦" data-position="right center"  v-if="!is_voted(topic.id) && points <= 0">-->
-                    <!--<span class="ui label">{{ topic.vote_count }}</span>-->
-                    <!--<input type="hidden" v-bind:value="topic.id">-->
-                  <!--</a>-->
-
-                  <!-- Vote Ended -->
-                  <a class="ui circular labels">
+                  <a class="ui label" data-tooltip="撤销投票" data-position="right center" v-on:click="toggleVote" v-if="is_voted(topic.id)">
+                    <i class="remove icon"></i>
+                    <span>{{ topic.vote_count }}</span>
+                    <input type="hidden" v-bind:value="topic.id">
+                  </a>
+                  <a class="ui olive label" data-tooltip="投一票" data-position="right center" v-on:click="toggleVote"  v-if="!is_voted(topic.id) && points > 0">
+                    <i class="thumbs outline up icon"></i>
+                    <span>{{ topic.vote_count }}</span>
+                    <input type="hidden" v-bind:value="topic.id">
+                  </a>
+                  <a class="ui circular labels" data-tooltip="您已经没有票啦" data-position="right center"  v-if="!is_voted(topic.id) && points <= 0">
                     <span class="ui label">{{ topic.vote_count }}</span>
                     <input type="hidden" v-bind:value="topic.id">
                   </a>
+
+                  <!-- Vote Ended -->
+                  <!--<a class="ui circular labels">-->
+                    <!--<span class="ui label">{{ topic.vote_count }}</span>-->
+                    <!--<input type="hidden" v-bind:value="topic.id">-->
+                  <!--</a>-->
                   <!-- Vote Ended -->
                 </td>
               </tr>
