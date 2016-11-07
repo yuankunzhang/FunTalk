@@ -19,7 +19,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-zh:
+zh-CN:
   home: "首页"
   archives: "存档"
   about: "关于"
