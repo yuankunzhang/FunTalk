@@ -67,8 +67,8 @@ var topics = new Vue({
         },
         toggleVote: function (event) {
             // Vote Ended
-            // event.preventDefault();
-            // return false;
+            event.preventDefault();
+            return false;
             // Vote Ended
 
             var target = event.target;
