@@ -8,9 +8,9 @@ ENABLED_BLUEPRINTS = (
 
 
 def create_app(app_name=None, config=None):
-    '''
+    """
     Create a new Flask application instance, and return it to the caller.
-    '''
+    """
     if not app_name:
         app_name = 'app'
 
