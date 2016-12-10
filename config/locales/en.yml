@@ -35,6 +35,7 @@ en:
   new_topic: "New Topic"
   topic_subject: "Topic Subject"
   topic_description: "Topic Description"
+  topic_content: "Topic Content"
   cancel: "Cancel"
   submit: " Submit"
   topic_list: "Check out the Topics"

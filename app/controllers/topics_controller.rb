@@ -1,3 +1,5 @@
+require 'github/markdown'
+
 class TopicsController < ApplicationController
 
   def create
@@ -16,6 +18,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @topic.content = GitHub::Markdown.render_gfm(@topic.content)
   end
 
   def get_pending

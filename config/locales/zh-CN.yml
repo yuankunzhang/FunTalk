@@ -19,7 +19,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-zh:
+zh-CN:
   home: "首页"
   archives: "存档"
   about: "关于"
@@ -35,6 +35,7 @@ zh:
   new_topic: "新主题"
   topic_subject: "主题"
   topic_description: "摘要"
+  topic_content: "正文"
   cancel: "取消"
   submit: " 提交"
   topic_list: "所有主题"

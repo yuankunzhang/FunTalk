@@ -69,6 +69,7 @@ GEM
     ffi (1.9.14)
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
+    github-markdown (0.6.9)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -202,6 +203,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
+  github-markdown
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
